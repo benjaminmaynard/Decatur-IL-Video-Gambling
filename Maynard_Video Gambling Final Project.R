@@ -200,7 +200,7 @@ View(RevenueReport_2019_Over6Mil)
 # import tidyverse and ggmap packages
 library(tidyverse)
 library(ggmap)
-register_google(key = "AIzaSyCk5aFK-MURmiZKVapdbabOqfE-ce3LBuE")
+register_google(key = "API_KEY_HERE") # actual api key not included here due to costs being incrued after so many API calls
 
 Decatur_Map <- get_googlemap(center = c(-88.95, 39.85), zoom = 12)
 ggmap(Decatur_Map)
@@ -226,8 +226,7 @@ ggmap(Decatur_Map) +
 
 #--------------- Heat Map of Median Income Per Capita for Decatur ---------------
 library(tidycensus)
-# actual api key not included here due to costs being incrued after so many API calls
-census_api_key("API_KEY_HERE", install = TRUE)
+census_api_key("API_KEY_HERE", install = TRUE) # actual api key not included here
 income <- c(income = "B19301A_001E")
 
 # get median incomes for all census tracts in Macon County. Data comes from the ACS 5-
