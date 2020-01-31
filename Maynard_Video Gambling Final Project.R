@@ -1,5 +1,6 @@
 # IS470 Business Intelligence and Big Data 
 # Final Project - Video Gambling
+# Ben Maynard
 library(plyr)
 library(dplyr)
 library(ggplot2)
