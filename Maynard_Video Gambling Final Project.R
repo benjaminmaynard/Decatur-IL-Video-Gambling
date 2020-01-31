@@ -178,19 +178,19 @@ View(RevenueReport_2019)
 RevenueReport_2019$License_Number <- as.numeric(as.character(RevenueReport_2019$License_Number))
 RevenueReport_2019$Amount_Played <- as.numeric(as.character(RevenueReport_2019$Amount_Played))
 
-# Create new dataset for establishments where Amount_Played < 3 million dollars
+# Create new dataset for establishments where Amount_Played <= 3 million dollars
 RevenueReport_2019_Under3Mil <- RevenueReport_2019[RevenueReport_2019$Amount_Played <= 3000000, ]
 RevenueReport_2019_Under3Mil$Rank <- NA
 RevenueReport_2019_Under3Mil$Rank <- rank(RevenueReport_2019_Under3Mil$Amount_Played)
 View(RevenueReport_2019_Under3Mil)
 
 # Create new dataset for establishments where Amount_Played is between 3 and 6 million dollars
-RevenueReport_2019_3to6Mil <- RevenueReport_2019[RevenueReport_2019$Amount_Played >= 3000000 & RevenueReport_2019$Amount_Played <= 6000000, ]
+RevenueReport_2019_3to6Mil <- RevenueReport_2019[RevenueReport_2019$Amount_Played > 3000000 & RevenueReport_2019$Amount_Played < 6000000, ]
 RevenueReport_2019_3to6Mil$Rank <- NA
 RevenueReport_2019_3to6Mil$Rank <- rank(RevenueReport_2019_3to6Mil$Amount_Played)
 View(RevenueReport_2019_3to6Mil)
 
-# Create new dataset for establishments where Amount_Played is 6+ million dollars
+# Create new dataset for establishments where Amount_Played >= 6 million dollars
 RevenueReport_2019_Over6Mil <- RevenueReport_2019[RevenueReport_2019$Amount_Played >= 6000000, ]
 RevenueReport_2019_Over6Mil$Rank <- NA
 RevenueReport_2019_Over6Mil$Rank <- rank(RevenueReport_2019_Over6Mil$Amount_Played)
@@ -225,7 +225,8 @@ ggmap(Decatur_Map) +
 
 #--------------- Heat Map of Median Income Per Capita for Decatur ---------------
 library(tidycensus)
-census_api_key("a44001370d81620992d5a3464006622b33b49995", install = TRUE)
+# actual api key not included here due to costs being incrued after so many API calls
+census_api_key("API_KEY_HERE", install = TRUE)
 income <- c(income = "B19301A_001E")
 
 # get median incomes for all census tracts in Macon County. Data comes from the ACS 5-
